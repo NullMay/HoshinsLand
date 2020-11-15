@@ -39,8 +39,4 @@ public class RegistrationController {
         return "redirect:/login";
     }
 
-    public String Show(Model model){
-        model.addAttribute("message","Registration is active");
-        return "registration";
-    }
 }
