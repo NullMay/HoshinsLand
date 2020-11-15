@@ -3,7 +3,7 @@ package com.Nullmay.HoshinsLand.Entities;
 import org.springframework.security.core.GrantedAuthority;
 
 public enum Role implements GrantedAuthority {
-    READRER,TRANSLATOR,ADMIN;
+    USER,ADMIN;
 
     @Override
     public String getAuthority() {
