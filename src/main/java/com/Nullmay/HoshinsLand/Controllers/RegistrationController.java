@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collections;
@@ -31,7 +32,6 @@ public class RegistrationController {
             model.addAttribute("message", "User exists!");
             return "registration";
         }
-
 
         user.setRoles(Collections.singleton(Role.USER));
         userRepo.save(user);
