@@ -12,6 +12,13 @@ public class User  {
     @GeneratedValue(strategy = GenerationType.AUTO )
     private Long id;
 
+    public User(@Email @NotEmpty String email, @NotEmpty String username, @NotEmpty String password, Set<Role> roles) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
     @Email
     @NotEmpty
     private String email;
@@ -71,4 +78,17 @@ public class User  {
     public boolean isAdmin(){
         return roles.contains(Role.ADMIN);
     }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
+
 }
