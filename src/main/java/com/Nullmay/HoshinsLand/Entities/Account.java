@@ -3,7 +3,7 @@ package com.Nullmay.HoshinsLand.Entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "account")
+@Table(name = "accounts")
 public class Account {
 
     public Account(int id, int balance) {
