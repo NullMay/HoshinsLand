@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  hoshin_db:
+    container_name: 'postgres'
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5430:5432"
+    environment:
+      POSTGRES_DB: hoshins_land
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mydb

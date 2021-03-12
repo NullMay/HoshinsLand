@@ -2,8 +2,8 @@ package com.Nullmay.HoshinsLand.Entities;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "novel")
+//@Entity
+//@Table(name = "novel")
 public class Novel {
 
     public Novel(int id) {
