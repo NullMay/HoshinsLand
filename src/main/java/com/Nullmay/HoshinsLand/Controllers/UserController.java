@@ -1,4 +1,4 @@
-/*package com.Nullmay.HoshinsLand.Controllers;
+package com.Nullmay.HoshinsLand.Controllers;
 
 
 import com.Nullmay.HoshinsLand.Entities.Role;
@@ -48,4 +48,3 @@ public class UserController {
 }
 
 
-*/
