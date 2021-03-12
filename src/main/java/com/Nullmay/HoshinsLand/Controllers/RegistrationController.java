@@ -6,13 +6,12 @@ import com.Nullmay.HoshinsLand.Repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 
+
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/registration")
 @Controller
 public class RegistrationController {
@@ -25,7 +24,7 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String addUser(User user, Model model) {
+    public String addUser(@RequestBody User user, Model model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
         if (userFromDb != null) {

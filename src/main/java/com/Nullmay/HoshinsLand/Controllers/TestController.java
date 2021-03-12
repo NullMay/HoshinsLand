@@ -23,9 +23,9 @@ public class TestController {
     @GetMapping ("/login")
     void ussdfserList() {
 
-        User savedUser =repository.save(new User("Tests@ml.com", "Tests","Tests", Collections.singleton(USER)));
-        User user2 = repository.save(new User("Naik@gmail.com", "ZDE","12333333", Collections.singleton(USER)));
-        User user3 = repository.save(new User("Naisdfsdk@gmail.com", "FREEE","12werwe", Collections.singleton(USER)));
+//        User savedUser =repository.save(new User("Tests@ml.com", "Tests","Tests", Collections.singleton(USER)));
+//        User user2 = repository.save(new User("Naik@gmail.com", "ZDE","12333333", Collections.singleton(USER)));
+//        User user3 = repository.save(new User("Naisdfsdk@gmail.com", "FREEE","12werwe", Collections.singleton(USER)));
 
         System.out.println(userService.findAll());
     }
