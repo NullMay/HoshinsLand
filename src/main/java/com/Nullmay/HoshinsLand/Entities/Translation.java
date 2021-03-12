@@ -6,10 +6,12 @@ import javax.persistence.*;
 @Table(name = "translations")
 public class Translation {
 
+    public Translation(){ }
     public Translation(Long id) {
         this.id = id;
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 }

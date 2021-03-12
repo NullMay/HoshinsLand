@@ -13,6 +13,8 @@ public class User  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public User(){ }
+
     public User(@Email @NotEmpty String email, @NotEmpty String username, @NotEmpty String password, Set<Role> roles) {
         this.email = email;
         this.username = username;
