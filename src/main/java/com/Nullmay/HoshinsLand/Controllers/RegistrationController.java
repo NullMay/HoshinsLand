@@ -4,6 +4,7 @@ import com.Nullmay.HoshinsLand.Entities.Role;
 import com.Nullmay.HoshinsLand.Entities.User;
 import com.Nullmay.HoshinsLand.Repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,7 @@ public class RegistrationController {
     }
 
     @PostMapping
+    @ResponseStatus(value = HttpStatus.OK)
     public void addUser(@RequestBody User user, Model model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
