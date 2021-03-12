@@ -15,7 +15,7 @@ public class User  {
         this.email = email;
         this.username = username;
         this.password = password;
-//        this.roles = roles;
+        this.roles = roles;
     }
 
     @Email
@@ -27,8 +27,10 @@ public class User  {
     @NotEmpty
     private String password;
 
-//    @Enumerated(EnumType.STRING)
-//    private Set<Role> roles;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
 
     public Long getId() {
@@ -64,17 +66,17 @@ public class User  {
         this.password = password;
     }
 
-//    public Set<Role> getRoles() {
-//        return roles;
-//    }
-//
+      public Set<Role> getRoles() {
+          return roles;
+      }
+
     public void setRoles(Set<Role> roles) {
-//        this.roles = roles;
+        this.roles = roles;
     }
-//
-//    public boolean isAdmin(){
-//        return roles.contains(Role.ADMIN);
-//    }
+
+      public boolean isAdmin(){
+          return roles.contains(Role.ADMIN);
+      }
 
 
     @Override

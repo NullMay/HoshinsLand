@@ -2,16 +2,15 @@ package com.Nullmay.HoshinsLand.Entities;
 
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "contest")
+@Entity
+@Table(name = "contests")
 public class Contest {
 
-    public Contest(int id) {
+    public Contest(Long id) {
         this.id = id;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
 }
