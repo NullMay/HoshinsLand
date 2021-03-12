@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
 import java.util.Collections;
+import java.util.List;
 
 
 @DataJpaTest
@@ -29,9 +30,13 @@ public class DB_Test {
     @Rollback(false)
     public void testFindNewUser() {
 
-        User savedUser = repository.save(new User("Tests@ml.com", "Tests","Tests", Collections.singleton(USER)));assertThat(savedUser.getId()).isGreaterThan(0);
+        User savedUser =repository.save(new User("Tests@ml.com", "Tests","Tests", Collections.singleton(USER)));
+        User user2 = repository.save(new User("Naik@gmail.com", "ZDE","12333333", Collections.singleton(USER)));
+        User user3 = repository.save(new User("Naisdfsdk@gmail.com", "FREEE","12werwe", Collections.singleton(USER)));
 
-        assertThat(savedUser.getUsername().equals("Tests"));
+        List<User>users = repository.findAll();
+        users.toString();
+      //  assertThat(savedUser.getUsername().equals("Tests"));
         
         }
 
