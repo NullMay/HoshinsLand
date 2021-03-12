@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 
 
-//@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/registration")
-@Controller
+@RestController
 public class RegistrationController {
     @Autowired
     private UserRepo userRepo;
@@ -25,7 +24,6 @@ public class RegistrationController {
     }
 
     @PostMapping
-    @ResponseStatus(value = HttpStatus.OK)
     public void addUser(@RequestBody User user, Model model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
