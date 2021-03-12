@@ -9,14 +9,13 @@ import java.util.Set;
 @Table(name = "users")
 public class User  {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
     private Long id;
 
     public User(@Email @NotEmpty String email, @NotEmpty String username, @NotEmpty String password, Set<Role> roles) {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.roles = roles;
+//        this.roles = roles;
     }
 
     @Email
@@ -28,10 +27,8 @@ public class User  {
     @NotEmpty
     private String password;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+//    @Enumerated(EnumType.STRING)
+//    private Set<Role> roles;
 
 
     public Long getId() {
@@ -67,17 +64,17 @@ public class User  {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
+//    public Set<Role> getRoles() {
+//        return roles;
+//    }
+//
     public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+//        this.roles = roles;
     }
-
-    public boolean isAdmin(){
-        return roles.contains(Role.ADMIN);
-    }
+//
+//    public boolean isAdmin(){
+//        return roles.contains(Role.ADMIN);
+//    }
 
 
     @Override
@@ -87,7 +84,7 @@ public class User  {
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", roles=" + roles +
+//                ", roles=" + roles +
                 '}';
     }
 

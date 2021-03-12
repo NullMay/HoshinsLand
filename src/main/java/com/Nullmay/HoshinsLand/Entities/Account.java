@@ -12,9 +12,7 @@ public class Account {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
-    @CollectionTable(name = "account_id", joinColumns = @JoinColumn(name = "user_id"))
-    private int id;
+    private long id;
 
-    private int balance;
+    private float balance;
 }
