@@ -36,7 +36,6 @@
         password: "",
       }
     },
-    inject: ['http'],
     name: 'Registration',
     methods: {
       register: async function () {
@@ -45,11 +44,7 @@
           email: this.email,
           password: this.password,
         }
-        let res = await this.http.post('http://localhost:8080/registration', data);
-        console.log(res)
-        // this.$store.dispatch('register', data)
-        //     .then(() => this.$router.push('/'))
-        //     .catch(err => console.log(err))
+        await this.$store.dispatch('auth/register', data);
       }
     }
 

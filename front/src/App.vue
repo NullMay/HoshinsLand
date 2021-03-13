@@ -5,7 +5,22 @@
   </div>
   <router-view/>
 </template>
-
+<script>
+export default {
+  methods: {
+    logout: function () {
+      this.$store.dispatch('logout')
+          .then(() => {
+            this.$router.push('/login')
+          })
+    }
+  },
+  created: function () {
+    console.log(this.$store)
+    console.log(this.$router)
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
