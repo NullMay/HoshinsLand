@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.net.http.HttpRequest;
 
 @Controller
@@ -23,15 +25,9 @@ public class LoginController extends HttpServlet {
     @Autowired
     UserRepo userRepo;
 
-
-
-    @GetMapping("/login")
-    private String GetLoginPage() {
-        return "login";
-    }
-
     @PostMapping("/login")
-    private String Authencticate(User user, Model model, HttpServletRequest request) {
+    private void Authencticate(User user, HttpServletRequest request, HttpServletResponse response)
+    throws IOException{
 
 
         User dbuser = userRepo.findByUsername(user.getUsername());
@@ -39,10 +35,9 @@ public class LoginController extends HttpServlet {
             String password = user.getPassword();
             if (passwordEncoder.encoder().encode(user.getPassword()).equals(dbuser.getPassword())) {
                 HttpSession newSession = request.getSession(true);
-                return "main";
             }
         }
-        else model.addAttribute("message","Wrong credentials");
-        return "login";
+        else
+            response.sendError(401, "Wrong credentials.");
+       }
     }
-}

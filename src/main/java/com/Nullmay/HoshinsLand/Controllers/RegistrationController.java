@@ -20,11 +20,6 @@ public class RegistrationController {
     @Autowired
     private EncoderConfig passwordEncoder;
 
-    @GetMapping
-    public String registration() {
-        return "registration";
-    }
-
     @PostMapping
     public void addUser(@RequestBody User user, Model model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
@@ -36,7 +31,5 @@ public class RegistrationController {
         user.setRoles(Collections.singleton(Role.USER));
         user.setPassword(passwordEncoder.encoder().encode(user.getPassword()));
         userRepo.save(user);
-
     }
-
 }
