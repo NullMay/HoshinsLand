@@ -5,16 +5,14 @@ import com.Nullmay.HoshinsLand.Entities.User;
 import com.Nullmay.HoshinsLand.Repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.net.http.HttpRequest;
 
 @Controller
 public class LoginController extends HttpServlet {
@@ -26,15 +24,17 @@ public class LoginController extends HttpServlet {
     UserRepo userRepo;
 
     @PostMapping("/login")
-    private void Authencticate(User user, HttpServletRequest request, HttpServletResponse response)
+    private void Authencticate(HttpServletResponse response, HttpServletRequest request, @RequestParam String username,
+    @RequestParam String password)
     throws IOException{
 
-
-        User dbuser = userRepo.findByUsername(user.getUsername());
-        if (user != null) {
-            String password = user.getPassword();
-            if (passwordEncoder.encoder().encode(user.getPassword()).equals(dbuser.getPassword())) {
-                HttpSession newSession = request.getSession(true);
+        User dbuser = userRepo.findByUsername(username);
+        if (dbuser != null) {
+            if (passwordEncoder.encoder().matches(password,dbuser.getPassword())) {
+                HttpSession session = request.getSession(true);
+            }
+            else{
+                response.sendError(401,"Wrong credentials.");
             }
         }
         else
