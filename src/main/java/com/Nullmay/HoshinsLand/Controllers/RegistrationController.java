@@ -17,7 +17,7 @@ import java.util.Collections;
 public class RegistrationController {
     @Autowired
     private UserRepo userRepo;
-
+//getrid
     @GetMapping
     public String registration() {
         return "registration";
