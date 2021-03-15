@@ -1,4 +1,4 @@
-#HoshinsLand
+# HoshinsLand
 
 A service for gathering translators from around the whole world. We're planning to make it a donation based website with two main systems:
 
