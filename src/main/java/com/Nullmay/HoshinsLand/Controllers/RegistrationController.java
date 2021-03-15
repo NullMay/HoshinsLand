@@ -1,11 +1,10 @@
 package com.Nullmay.HoshinsLand.Controllers;
 
+import com.Nullmay.HoshinsLand.Config.EncoderConfig;
 import com.Nullmay.HoshinsLand.Entities.Role;
 import com.Nullmay.HoshinsLand.Entities.User;
 import com.Nullmay.HoshinsLand.Repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,11 +16,9 @@ import java.util.Collections;
 public class RegistrationController {
     @Autowired
     private UserRepo userRepo;
-//getrid
-    @GetMapping
-    public String registration() {
-        return "registration";
-    }
+
+    @Autowired
+    private EncoderConfig passwordEncoder;
 
     @PostMapping
     public void addUser(@RequestBody User user, Model model) {
@@ -32,8 +29,7 @@ public class RegistrationController {
         }
 
         user.setRoles(Collections.singleton(Role.USER));
+        user.setPassword(passwordEncoder.encoder().encode(user.getPassword()));
         userRepo.save(user);
-
     }
-
 }
